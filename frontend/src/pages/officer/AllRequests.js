@@ -8,7 +8,6 @@ const officerNav = [
 ];
 
 const AllRequests = () => {
-  const [requests, setRequests] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [statusFilter, setStatusFilter] = useState('');
   const [loading, setLoading] = useState(true);
@@ -31,7 +30,6 @@ const AllRequests = () => {
     try {
       const params = status ? `?status=${status}` : '';
       const res = await axios.get(`/api/requests${params}`);
-      setRequests(res.data.requests);
       setFiltered(res.data.requests);
     } catch (err) {
       console.error('Failed to fetch requests:', err);
